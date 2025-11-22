@@ -1,0 +1,5 @@
+{
+  "name": "SparkHub",
+  "description": "A collaborative idea and task management platform scaffolded with TypeScript, Tailwind, and Prisma support.",
+  "requestFramePermissions": []
+}
