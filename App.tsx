@@ -25,10 +25,19 @@ import MessagesLayout from './app/messages/layout';
 import MessagesIndexPage from './app/messages/page';
 import ConversationPage from './app/messages/[id]/page';
 
+// Auth
+import SigninPage from './app/auth/signin/page';
+import SignupPage from './app/auth/signup/page';
+
 const App: React.FC = () => {
   return (
     <HashRouter>
       <Routes>
+        {/* Auth Routes (Outside Layout) */}
+        <Route path="/auth/signin" element={<SigninPage />} />
+        <Route path="/auth/signup" element={<SignupPage />} />
+
+        {/* Protected App Routes */}
         <Route path="/" element={<Layout><Outlet /></Layout>}>
           <Route index element={<HomePage />} />
           <Route path="feed" element={<FeedPage />} />
