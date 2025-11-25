@@ -1,6 +1,8 @@
+'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import { Calendar, CheckCircle2, AlertCircle, User, Upload, Loader2, ArrowRight, DollarSign, MessageCircle, Send } from 'lucide-react';
 import { FileUploader } from '../../../components/FileUploader';
 import { useSocket } from '../../../lib/useSocket';
@@ -39,7 +41,8 @@ interface TaskData {
 }
 
 const TaskDetailPage: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const params = useParams();
+  const id = params?.id as string;
   const [task, setTask] = useState<TaskData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -210,7 +213,7 @@ const TaskDetailPage: React.FC = () => {
     <div className="max-w-3xl mx-auto animate-fade-in pb-12">
       <div className="mb-6">
         <div className="flex items-center gap-2 text-slate-500 text-sm mb-2">
-            <Link to={`/ideas/${task.idea.id}`} className="hover:underline hover:text-blue-600">{task.idea.title}</Link>
+            <Link href={`/ideas/${task.idea.id}`} className="hover:underline hover:text-blue-600">{task.idea.title}</Link>
             <span>/</span>
             <span>Task Details</span>
         </div>

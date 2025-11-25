@@ -1,6 +1,8 @@
+'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Outlet, NavLink, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Search, Plus, MessageSquare } from 'lucide-react';
 
 interface Conversation {
@@ -11,10 +13,10 @@ interface Conversation {
   avatar?: string;
 }
 
-const MessagesLayout: React.FC = () => {
+const MessagesLayout = ({ children }: { children: React.ReactNode }) => {
   const [conversations, setConversations] = useState<Conversation[]>([]);
-  const location = useLocation();
-  const isDetailView = location.pathname !== '/messages' && location.pathname !== '/messages/';
+  const pathname = usePathname();
+  const isDetailView = pathname !== '/messages' && pathname !== '/messages/';
 
   useEffect(() => {
     const fetchConversations = async () => {
@@ -60,13 +62,13 @@ const MessagesLayout: React.FC = () => {
                 </div>
             ) : (
                 <div className="divide-y divide-slate-50">
-                    {conversations.map(conv => (
-                        <NavLink 
+                    {conversations.map(conv => {
+                        const isActive = pathname === `/messages/${conv.id}`;
+                        return (
+                        <Link 
                             key={conv.id} 
-                            to={`/messages/${conv.id}`}
-                            className={({ isActive }) => 
-                                `flex items-center gap-3 p-4 transition-colors hover:bg-slate-50 ${isActive ? 'bg-blue-50 border-l-4 border-blue-600' : 'border-l-4 border-transparent'}`
-                            }
+                            href={`/messages/${conv.id}`}
+                            className={`flex items-center gap-3 p-4 transition-colors hover:bg-slate-50 ${isActive ? 'bg-blue-50 border-l-4 border-blue-600' : 'border-l-4 border-transparent'}`}
                         >
                             <div className="w-12 h-12 rounded-full bg-slate-200 flex-shrink-0 overflow-hidden">
                                 {conv.avatar ? (
@@ -86,8 +88,8 @@ const MessagesLayout: React.FC = () => {
                                 </div>
                                 <p className="text-xs text-slate-500 truncate">{conv.lastMessage || 'No messages'}</p>
                             </div>
-                        </NavLink>
-                    ))}
+                        </Link>
+                    )})}
                 </div>
             )}
         </div>
@@ -95,7 +97,7 @@ const MessagesLayout: React.FC = () => {
 
       {/* Main Content Area */}
       <div className={`flex-1 flex flex-col ${!isDetailView ? 'hidden md:flex' : 'flex'}`}>
-         <Outlet />
+         {children}
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
+'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import { ChatWindow } from '../../../components/ChatWindow';
 import { ChevronLeft } from 'lucide-react';
 
@@ -12,7 +14,8 @@ interface ConversationDetail {
 }
 
 const ConversationPage: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const params = useParams();
+  const id = params?.id as string;
   const [details, setDetails] = useState<ConversationDetail | null>(null);
   
   // Mock current user ID since we don't have real auth context in this scaffold
@@ -90,7 +93,7 @@ const ConversationPage: React.FC = () => {
     <div className="flex flex-col h-full">
         {/* Mobile Header Overrides */}
         <div className="md:hidden p-2 border-b border-slate-200 flex items-center">
-            <Link to="/messages" className="flex items-center text-slate-600">
+            <Link href="/messages" className="flex items-center text-slate-600">
                 <ChevronLeft size={20} />
                 <span>Back</span>
             </Link>

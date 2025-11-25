@@ -1,54 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SparkHub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Polyfill process for browser environment to prevent crashes in libs like next-auth or prisma
-        window.process = { env: { NODE_ENV: 'development' } };
-        
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3b82f6',
-                        secondary: '#64748b',
-                        background: '#f8fafc',
-                        surface: '#ffffff',
-                    }
-                }
-            }
-        }
-    </script>
 <script type="importmap">
 {
   "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@6.22.3",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "socket.io-client": "https://aistudiocdn.com/socket.io-client@^4.8.1",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "@prisma/client": "https://aistudiocdn.com/@prisma/client@^7.0.1",
+    "bcrypt": "https://aistudiocdn.com/bcrypt@^6.0.0",
     "socket.io": "https://aistudiocdn.com/socket.io@^4.8.1",
     "http": "https://aistudiocdn.com/http@^0.0.1-security",
-    "@prisma/client": "https://aistudiocdn.com/@prisma/client@^7.0.0",
-    "next/": "https://aistudiocdn.com/next@^16.0.3/",
-    "bcrypt": "https://aistudiocdn.com/bcrypt@^6.0.0",
-    "@playwright/test": "https://aistudiocdn.com/@playwright/test@^1.56.1",
-    "next-auth/react": "https://aistudiocdn.com/next-auth@^4.24.13/react",
+    "socket.io-client": "https://aistudiocdn.com/socket.io-client@^4.8.1",
+    "next/": "https://aistudiocdn.com/next@^16.0.4/",
+    "next": "https://aistudiocdn.com/next@^16.0.4",
+    "tailwindcss": "https://aistudiocdn.com/tailwindcss@^4.1.17",
+    "@playwright/test": "https://aistudiocdn.com/@playwright/test@^1.57.0",
     "next-auth/": "https://aistudiocdn.com/next-auth@^4.24.13/",
     "next-auth": "https://aistudiocdn.com/next-auth@^4.24.13",
-    "@next-auth/prisma-adapter": "https://aistudiocdn.com/@next-auth/prisma-adapter@^1.0.7",
-    "next": "https://aistudiocdn.com/next@^16.0.4",
-    "tailwindcss": "https://aistudiocdn.com/tailwindcss@^4.1.17"
+    "@next-auth/prisma-adapter": "https://aistudiocdn.com/@next-auth/prisma-adapter@^1.0.7"
   }
 }
 </script>
-</head>
-<body class="bg-slate-50 text-slate-900 antialiased">
-    <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
-</body>
-</html>
+<!-- This file is deleted. Next.js uses app/layout.tsx -->
