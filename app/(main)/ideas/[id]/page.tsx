@@ -9,7 +9,6 @@ import {
 import { TaskCreator } from '@/components/TaskCreator';
 import { useSocket } from '@/lib/useSocket';
 
-// Interfaces remain same as original...
 interface IdeaData {
   id: string;
   title: string;
@@ -58,7 +57,7 @@ export default function IdeaDetailPage() {
     if (!id) return;
     joinRoom(`idea:${id}`);
     
-    // Socket handlers...
+    // Socket handlers would go here...
     return () => leaveRoom(`idea:${id}`);
   }, [id, joinRoom, leaveRoom]);
 

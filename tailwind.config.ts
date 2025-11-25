@@ -25,9 +25,6 @@ const config: Config = {
       }
     },
   },
-  plugins: [
-    // @ts-ignore
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [],
 };
 export default config;

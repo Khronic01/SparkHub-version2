@@ -77,41 +77,88 @@ export default function SigninPage() {
           </div>
         )}
 
+        <div className="space-y-3 mb-6">
+          <button 
+            type="button"
+            onClick={() => handleSocialLogin('google')}
+            className="w-full bg-slate-800 hover:bg-slate-700 text-white font-medium py-3 rounded-xl border border-slate-700 transition-all flex items-center justify-center gap-3"
+          >
+            <Chrome size={20} />
+            <span>Sign in with Google</span>
+          </button>
+          <button 
+             type="button"
+             onClick={() => handleSocialLogin('github')}
+             className="w-full bg-slate-800 hover:bg-slate-700 text-white font-medium py-3 rounded-xl border border-slate-700 transition-all flex items-center justify-center gap-3"
+          >
+            <Github size={20} />
+            <span>Sign in with GitHub</span>
+          </button>
+        </div>
+
+        <div className="relative mb-6">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-slate-800"></div>
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-slate-900 px-2 text-slate-500 font-medium">Or continue with email</span>
+          </div>
+        </div>
+
         <form onSubmit={handleSubmit} className="space-y-5">
            {/* Form fields same as original */}
            <div>
             <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5 tracking-wider">Email Address</label>
-            <input 
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 px-4 text-slate-200 focus:ring-2 focus:ring-blue-500 outline-none"
-              placeholder="you@example.com"
-              required
-            />
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500" size={18} />
+              <input 
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 pl-10 pr-4 text-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-slate-600"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
           </div>
           <div>
-            <label className="block text-xs font-bold text-slate-400 uppercase mb-1.5 tracking-wider">Password</label>
-            <input 
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 px-4 text-slate-200 focus:ring-2 focus:ring-blue-500 outline-none"
-              placeholder="••••••••"
-              required
-            />
+            <div className="flex justify-between items-center mb-1.5">
+              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Password</label>
+              <a href="#" className="text-xs text-blue-400 hover:text-blue-300">Forgot password?</a>
+            </div>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500" size={18} />
+              <input 
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-3 pl-10 pr-4 text-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-slate-600"
+                placeholder="••••••••"
+                required
+              />
+            </div>
           </div>
 
           <button 
             type="submit" 
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2"
+            className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-blue-900/30 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {loading ? <Loader2 className="animate-spin" size={20} /> : 'Sign In'}
+            {!loading && <ArrowRight size={18} />}
           </button>
         </form>
+
+        <div className="mt-8 pt-6 border-t border-slate-800 text-center">
+          <p className="text-slate-400 text-sm">
+            Don't have an account?{' '}
+            <Link href="/auth/signup" className="text-blue-400 hover:text-blue-300 font-medium transition-colors">
+              Sign Up
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
