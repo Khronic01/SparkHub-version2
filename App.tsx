@@ -14,6 +14,7 @@ import AdminDisputesPage from './app/admin/disputes/page';
 
 import CreateIdeaPage from './app/ideas/create/page';
 import IdeaDetailPage from './app/ideas/[id]/page';
+import TasksPage from './app/tasks/page';
 import TaskDetailPage from './app/tasks/[id]/page';
 import MarketplacePage from './app/marketplace/page';
 import MarketplaceNewPage from './app/marketplace/new/page';
@@ -55,8 +56,11 @@ const App: React.FC = () => {
             <Route path="create" element={<CreateIdeaPage />} />
             <Route path=":id" element={<IdeaDetailPage />} />
           </Route>
+          
+          {/* Tasks Routes */}
           <Route path="tasks">
-            <Route path=":id" element={<TaskDetailPage />} />
+             <Route index element={<TasksPage />} />
+             <Route path=":id" element={<TaskDetailPage />} />
           </Route>
           
           {/* Marketplace Routes */}

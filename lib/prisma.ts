@@ -9,4 +9,7 @@ export const prisma =
     log: ['query'],
   });
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
+// Prevent crash in browser environment where process might be undefined/polyfilled differently
+if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV !== 'production') {
+    globalForPrisma.prisma = prisma;
+}

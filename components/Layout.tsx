@@ -81,7 +81,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           
           <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2 px-3">Management</div>
           <NavItem to="/ideas/create" icon={<PlusCircle size={20} />} label="New Idea" active={p === '/ideas/create'} />
-          <NavItem to="/tasks/1" icon={<CheckSquare size={20} />} label="My Tasks" active={p.startsWith('/tasks')} />
+          <NavItem to="/tasks" icon={<CheckSquare size={20} />} label="My Tasks" active={p === '/tasks' || (p.startsWith('/tasks') && p !== '/tasks/create')} />
           
           <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-6 mb-2 px-3">Settings</div>
           <NavItem to="/profile" icon={<User size={20} />} label="Profile" active={p.startsWith('/profile')} />

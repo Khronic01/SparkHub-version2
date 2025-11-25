@@ -6,6 +6,9 @@
     <title>SparkHub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Polyfill process for browser environment to prevent crashes in libs like next-auth or prisma
+        window.process = { env: { NODE_ENV: 'development' } };
+        
         tailwind.config = {
             theme: {
                 extend: {
@@ -34,6 +37,7 @@
     "next/": "https://aistudiocdn.com/next@^16.0.3/",
     "bcrypt": "https://aistudiocdn.com/bcrypt@^6.0.0",
     "@playwright/test": "https://aistudiocdn.com/@playwright/test@^1.56.1",
+    "next-auth/react": "https://aistudiocdn.com/next-auth@^4.24.13/react",
     "next-auth/": "https://aistudiocdn.com/next-auth@^4.24.13/",
     "next-auth": "https://aistudiocdn.com/next-auth@^4.24.13",
     "@next-auth/prisma-adapter": "https://aistudiocdn.com/@next-auth/prisma-adapter@^1.0.7"
@@ -43,5 +47,6 @@
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
     <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>
