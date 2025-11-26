@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "prisma migrate deploy && next build",
+    "cleanup": "node scripts/cleanup.js",
+    "dev": "node scripts/cleanup.js && next dev",
+    "build": "node scripts/cleanup.js && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint"
   },
