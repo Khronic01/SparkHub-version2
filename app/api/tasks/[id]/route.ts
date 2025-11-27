@@ -25,21 +25,7 @@ export async function GET(
             title: true,
             authorId: true
           }
-        },
-        comments: {
-          orderBy: {
-            createdAt: 'desc',
-          },
-          include: {
-            author: {
-              select: {
-                id: true,
-                name: true,
-                image: true,
-              },
-            },
-          },
-        },
+        }
       }
     });
 

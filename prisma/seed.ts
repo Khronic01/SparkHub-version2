@@ -25,8 +25,6 @@ async function main() {
     { code: 'RISING_CONTRIBUTOR', name: 'Rising Contributor', description: 'Completed first task', icon: 'TrendingUp' },
     { code: 'COMMUNITY_VOICE', name: 'Community Voice', description: 'Posted 10 comments', icon: 'MessageCircle' },
     { code: 'STREAK_MASTER', name: 'Streak Master', description: '7 day activity streak', icon: 'Flame' },
-    { code: 'POWER_USER', name: 'Power User', description: 'Completed 100 tasks', icon: 'Zap' },
-    { code: 'COMMUNITY_PILLAR', name: 'Community Pillar', description: 'Posted 50 comments', icon: 'Users' },
   ];
 
   for (const b of badges) {

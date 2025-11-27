@@ -104,25 +104,13 @@ export const GamificationService = {
         if (taskCount >= 1) badgesToAward.push('RISING_CONTRIBUTOR');
     }
 
-    // 3. Power User: Complete 100 tasks
-    if (action === 'COMPLETE_TASK' && !earnedCodes.has('POWER_USER')) {
-        const taskCount = await prisma.task.count({ where: { assigneeId: userId, status: 'COMPLETED' } });
-        if (taskCount >= 100) badgesToAward.push('POWER_USER');
-    }
-
-    // 4. Community Voice: 10 Comments
+    // 3. Community Voice: 10 Comments
     if (action === 'COMMENT' && !earnedCodes.has('COMMUNITY_VOICE')) {
         const commentCount = await prisma.comment.count({ where: { authorId: userId } });
         if (commentCount >= 10) badgesToAward.push('COMMUNITY_VOICE');
     }
 
-    // 5. Community Pillar: 50 Comments
-    if (action === 'COMMENT' && !earnedCodes.has('COMMUNITY_PILLAR')) {
-        const commentCount = await prisma.comment.count({ where: { authorId: userId } });
-        if (commentCount >= 50) badgesToAward.push('COMMUNITY_PILLAR');
-    }
-
-    // 6. Streak Master: 7 day streak
+    // 4. Streak Master: 7 day streak
     if (!earnedCodes.has('STREAK_MASTER') && user.currentStreak >= 7) {
         badgesToAward.push('STREAK_MASTER');
     }
